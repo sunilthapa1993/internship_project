@@ -1,5 +1,5 @@
 1. Clone the GitHub repository:
-   git clone
+   git clone https://github.com/sunilthapa1993/internship_project.git
 
 2. Change to project directory:
    cd my_todo_list
