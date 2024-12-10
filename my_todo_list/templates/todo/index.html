@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My ToDo List</title>
+    <style>
+        body{
+            background-color: antiquewhite;
+        }
+        .task-table{
+            margin: auto;
+            width: 50%;
+            border: 3px solid green;
+            padding: 10px;
+            table-layout: fixed;
+            text-align: center;
+        }
+        .task-list_table{
+            margin: auto;
+            width: 80%;
+            padding: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main">
+        <h1 class="title" align="center">My ToDo List</h1>
+        <form class="task-form" action="{% url 'Add Task' %}" method="POST">
+            {% csrf_token %} 
+            <table class="task-table">
+            <tr>
+            <td><label for="title">Title: </label></td>
+            <td align="left"><input type="text" name="title" placeholder="Enter Title"></td>
+            </tr>
+            <tr><td></td><td><br></td></tr>
+            <tr>
+            <td><label for="task">Task: </label></td>
+            <td align="left"><textarea name="task" rows=5 cols=30 placeholder="Enter Task"></textarea></td>
+            </tr>
+            <tr><td></td><td><br></td></tr>
+            <tr>
+            <td colspan=2 align="center"><button type="submit">Add Task</button></td>
+            </tr>
+            </table>
+        </form>
+        </div><br>
+        <div class="task-lists">
+            <h1 align="center">My Task List</h1>
+        <table class="task-list_table">
+            <tr>
+            <th>S.No.</th>
+            <th>Title</th>
+            <th>Task</th>
+            </tr>
+            {% for task in tasks %}
+            <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ task.title }}</td>
+            <td>{{ task.task }}</td>
+            </tr>
+            {% endfor %}
+            </table>
+            </div>
+
+</body>
+</html>
